@@ -1,1 +1,1 @@
-docker build . --tag devops-python:v2
+docker build . --tag devops-python:v1

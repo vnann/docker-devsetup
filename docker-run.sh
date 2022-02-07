@@ -2,7 +2,7 @@
 
 echo "Starting Docker run..."
 
-docker run -it --name devops-python-v2 --rm \
+docker run -it --name devops-python --rm \
   --volume $(pwd):/home/devuser/devops-python \
-  --net=host devops-python:v2
+  --net=host devops-python:v1
 
