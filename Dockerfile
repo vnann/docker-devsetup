@@ -3,6 +3,7 @@ FROM ubuntu:latest
 ENV TERM xterm
 ENV ZSH_THEME gnzh
 ENV PATH=$PATH:/usr/bin/python3
+ENV RUNNING_IN_DOCKER true
 
 RUN apt-get update \
     && apt-get install -y \
@@ -30,3 +31,4 @@ COPY .zshrc /root
 COPY .vimrc /root
 RUN python3 -m pip install -r requirements.txt
 
+CMD ["zsh"]
