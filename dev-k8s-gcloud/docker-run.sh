@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 IMAGE_VERSION="v1"
-IMAGE_NAME="dev-k8s"
+IMAGE_NAME="dev-k8s-gcloud"
 CONTAINER_NAME="$IMAGE_NAME-$USER"
 
 echo "Starting Kubernetes dev environemnt container....."
