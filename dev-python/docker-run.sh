@@ -4,6 +4,7 @@ IMAGE_VERSION="v1"
 IMAGE_NAME="dev-python"
 CONTAINER_NAME=$IMAGE_NAME
 
+figlet -f big "Python Dev Env"
 echo "Starting python dev environemnt container....."
 echo "------------------------------------------------------"
 echo " Docker Image Name:        $IMAGE_NAME"
