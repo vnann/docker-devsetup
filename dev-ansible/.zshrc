@@ -100,4 +100,5 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias python="/usr/bin/python3"
-
+alias l='ls -al'
+figlet -f big "Welcome to Ansible Dev Env"
