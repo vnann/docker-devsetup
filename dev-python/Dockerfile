@@ -8,20 +8,23 @@ ENV RUNNING_IN_DOCKER true
 
 RUN apt-get update \
     && apt-get install -y \
-    vim \
-    sudo \
-    curl \
-    git-core \
-    gnupg \
-    locales \
-    python3 python3-pip python3-venv \
-    zsh \
-    wget \
-    unzip \
-    openssl \
-    fonts-powerline \
-    dos2unix \
-    figlet \
+    	vim \
+    	sudo \
+    	curl \
+    	git-core \
+    	gnupg \
+    	locales \
+    	python3 python3-pip python3-venv \
+    	zsh \
+    	wget \
+    	unzip \
+    	openssl \
+    	fonts-powerline \
+    	dos2unix \
+    	figlet \
+    	ca-certificates \
+    	apt-transport-https \
+    	lsb-release \
     && locale-gen en_US.UTF-8 \
     && adduser --quiet --disabled-password --shell /bin/zsh --home /home/devuser --gecos "User" devuser  \
     && echo "devuser:p@ssword1" | chpasswd && usermod -aG sudo devuser 
