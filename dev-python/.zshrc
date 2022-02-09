@@ -101,4 +101,4 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias python="/usr/bin/python3"
 alias l='ls -al'
-figlet -f big "Welcome to Python Dev Env"
+figlet -f smslant "Welcome to Python Dev Env"

@@ -1,10 +1,9 @@
 #!/usr/bin/bash
 
-IMAGE_VERSION="v2"
-IMAGE_NAME="devops-python"
+IMAGE_VERSION="v1"
+IMAGE_NAME="dev-python"
 CONTAINER_NAME="$IMAGE_NAME-$USER"
 
-figlet -f big "Python Dev Env"
 echo "Starting python dev environemnt container....."
 echo "------------------------------------------------------"
 echo " Docker Image Name:        $IMAGE_NAME"

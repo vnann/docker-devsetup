@@ -4,7 +4,6 @@ IMAGE_VERSION="v1"
 IMAGE_NAME="dev-ansible"
 CONTAINER_NAME="$IMAGE_NAME-$USER"
 
-figlet -f big "Ansible Dev Env"
 echo "Starting Ansible dev environemnt container....."
 echo "------------------------------------------------------"
 echo " Docker Image Name:        $IMAGE_NAME"
