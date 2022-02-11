@@ -28,6 +28,7 @@ RUN apt-get update \
         ca-certificates \
         apt-transport-https \
         lsb-release \
+        dnsutils \
     && locale-gen en_US.UTF-8 \
     && locale-gen en_US.UTF-8 \
     &&  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \

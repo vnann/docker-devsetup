@@ -1,4 +1,6 @@
+ansible
 netapp-lib
+netapp-ontap
 prettytable
 texttable
 tzlocal

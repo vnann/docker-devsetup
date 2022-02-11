@@ -28,6 +28,7 @@ RUN apt-get update \
         ca-certificates \
         apt-transport-https \
         lsb-release \
+        dnsutils \
     && locale-gen en_US.UTF-8 \
     && locale-gen en_US.UTF-8 \
     && curl -sL https://packages.microsoft.com/keys/microsoft.asc | \

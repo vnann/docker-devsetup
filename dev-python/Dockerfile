@@ -25,6 +25,7 @@ RUN apt-get update \
     	ca-certificates \
     	apt-transport-https \
     	lsb-release \
+        dnsutils \
     && locale-gen en_US.UTF-8 \
     && adduser --quiet --disabled-password --shell /bin/zsh --home /home/devuser --gecos "User" devuser  \
     && echo "devuser:p@ssword1" | chpasswd && usermod -aG sudo devuser 
