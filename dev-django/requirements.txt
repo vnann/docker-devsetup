@@ -1,0 +1,13 @@
+netapp-lib
+prettytable
+texttable
+tzlocal
+pycryptodome
+pytz
+termcolor
+urllib3
+requests
+netaddr
+utils
+Django
+psycopg2

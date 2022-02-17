@@ -1,4 +1,4 @@
-# Development environment for Ansible
+# Development environment for Python3
 FROM ubuntu:latest
 
 ENV TERM xterm
@@ -14,7 +14,8 @@ RUN apt-get update \
     	git-core \
     	gnupg \
     	locales \
-    	python3 python3-pip python3-venv \
+    	python3 python3-pip python3-venv python3-dev \
+	libpq-dev \
     	zsh \
     	wget \
     	unzip \
@@ -25,7 +26,7 @@ RUN apt-get update \
     	ca-certificates \
     	apt-transport-https \
     	lsb-release \
-	dnsutils \
+        dnsutils \
     && locale-gen en_US.UTF-8 \
     && adduser --quiet --disabled-password --shell /bin/zsh --home /home/devuser --gecos "User" devuser  \
     && echo "devuser:p@ssword1" | chpasswd && usermod -aG sudo devuser 
@@ -37,7 +38,7 @@ RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/t
 
 COPY requirements.txt .
 COPY .zshrc /home/devuser/.zshrc
-COPY .vimrc /home/devuser/.vimrc
+COPY .vimrc /home/devuser/.zshrc
 USER root
 RUN chown devuser:devuser /home/devuser/.zshrc \
     && chown devuser:devuser /home/devuser/.vimrc

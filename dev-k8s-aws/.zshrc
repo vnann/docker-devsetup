@@ -101,4 +101,12 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias python="/usr/bin/python3"
 alias l='ls -al'
+
+# History setting
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=10000
+SAVEHIST=10000
+setopt HIST_IGNORE_SPACE
+setopt SHARE_HISTORY
+
 figlet -f smslant  "Welcome to K8s & aws Dev Env"
