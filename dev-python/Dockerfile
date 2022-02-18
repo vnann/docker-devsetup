@@ -9,6 +9,7 @@ ENV RUNNING_IN_DOCKER true
 RUN apt-get update \
     && apt-get install -y \
     	vim \
+	dialog \
     	sudo \
     	curl \
     	git-core \
