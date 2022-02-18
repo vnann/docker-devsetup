@@ -1,0 +1,14 @@
+ansible
+netapp-lib
+netapp-ontap
+prettytable
+texttable
+tzlocal
+pycryptodome
+pytz
+termcolor
+urllib3
+requests
+netaddr
+utils
+argparse
