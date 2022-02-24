@@ -1,5 +1,6 @@
 # Development environment for Python3
-FROM ubuntu:latest
+#FROM ubuntu:latest
+FROM debian:bullseye-slim
 
 ENV TERM xterm
 ENV ZSH_THEME gnzh
@@ -37,8 +38,8 @@ WORKDIR /home/devuser
 RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" 
 
 COPY requirements.txt .
-COPY .zshrc /home/devuser/.zshrc
-COPY .vimrc /home/devuser/.zshrc
+COPY zshrc /home/devuser/.zshrc
+COPY vimrc /home/devuser/.zshrc
 USER root
 RUN chown devuser:devuser /home/devuser/.zshrc \
     && chown devuser:devuser /home/devuser/.vimrc
