@@ -1,5 +1,5 @@
-# Development environment for Python3
-#FROM ubuntu:latest
+# Development environment for Python
+
 FROM debian:bullseye-slim
 
 ENV TERM xterm
@@ -7,12 +7,8 @@ ENV ZSH_THEME gnzh
 ENV PATH=$PATH:/usr/bin/python3:/home/devuser/.local/bin
 ENV RUNNING_IN_DOCKER true
 
-ARG UID=1000
-ARG GID=1000
-ARG USERNAME=devuser
-
 RUN apt-get update \
-    && apt-get install -y \
+    &&  apt-get install -y \
     	vim \
 	dialog \
     	sudo \
@@ -30,11 +26,9 @@ RUN apt-get update \
     	ca-certificates \
     	apt-transport-https \
     	lsb-release \
-        dnsutils \
-    && groupadd --gid $GID -o $USERNAME \
-    #&& adduser -u $UID -g $GID --quiet --disabled-password --shell /bin/zsh --home /home/devuser --gecos "User" $USERNAME  \
-    && adduser --uid $UID --gid $GID  --quiet --disabled-password --shell /bin/zsh --home /home/devuser --gecos "User"  $USERNAME  \
-    && echo "devuser:p@ssword1" | chpasswd && usermod -aG sudo $USERNAME
+	dnsutils \
+    && adduser --quiet --disabled-password --shell /bin/zsh --home /home/devuser --gecos "User" devuser  \
+    && echo "devuser:p@ssword1" | chpasswd && usermod -aG sudo devuser 
 
 USER devuser
 WORKDIR /home/devuser
@@ -45,12 +39,10 @@ COPY requirements.txt .
 COPY zshrc /home/devuser/.zshrc
 COPY vimrc /home/devuser/.vimrc
 USER root
-RUN chown $USERNAME:$USERNAME /home/devuser/.zshrc \
-    && chown $USERNAME:$USERNAME /home/devuser/.vimrc \
-    && usermod -u $UID -o  $USERNAME \
-    && groupmod -g $UID $USERNAME
-USER $USERNAME
-
+RUN chown devuser:devuser /home/devuser/.zshrc \
+    && chown devuser:devuser /home/devuser/.vimrc
+USER devuser
 RUN python3 -m pip install -r requirements.txt
 
 CMD ["zsh"]
+
