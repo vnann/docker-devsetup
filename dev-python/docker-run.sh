@@ -12,7 +12,10 @@ echo " Docker image:version:     $IMAGE_NAME:$IMAGE_VERSION"
 echo "------------------------------------------------------"
 
 docker run -it --name $CONTAINER_NAME --rm \
-  -u $(id -u $USER):$(id -g $USER) \
+  --user $(id -u $USER):$(id -g $USER) \
   --volume $(pwd):/home/devuser/$IMAGE_NAME \
   --net=host  $IMAGE_NAME:$IMAGE_VERSION
 
+#docker run -it --name $CONTAINER_NAME --rm \
+#  --volume $(pwd):/home/devuser/$IMAGE_NAME \
+#  --net=host  $IMAGE_NAME:$IMAGE_VERSION
