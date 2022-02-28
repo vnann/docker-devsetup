@@ -1,15 +1,14 @@
 # Development environment for Python3
-#FROM ubuntu:latest
 FROM debian:bullseye-slim
+
+ARG UID=1000
+ARG GID=1000
+ARG USERNAME=devuser
 
 ENV TERM xterm
 ENV ZSH_THEME gnzh
-ENV PATH=$PATH:/usr/bin/python3:/home/devuser/.local/bin
+ENV PATH=$PATH:/usr/bin/python3:/home/$USERNAME/.local/bin
 ENV RUNNING_IN_DOCKER true
-
-ARG UID=1001
-ARG GID=1001
-ARG USERNAME=devuser
 
 RUN apt-get update \
     && apt-get install -y \
@@ -32,7 +31,6 @@ RUN apt-get update \
     	lsb-release \
         dnsutils \
     && groupadd --gid $GID -o $USERNAME \
-    #&& adduser -u $UID -g $GID --quiet --disabled-password --shell /bin/zsh --home /home/devuser --gecos "User" $USERNAME  \
     && adduser --uid $UID --gid $GID  --quiet --disabled-password --shell /bin/zsh --home /home/$USERNAME --gecos "User"  $USERNAME  \
     && echo "devuser:p@ssword1" | chpasswd && usermod -aG sudo $USERNAME
 
@@ -53,8 +51,8 @@ WORKDIR /home/$USERNAME
 RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" 
 
 COPY requirements.txt .
-COPY zshrc /home/devuser/.zshrc
-COPY vimrc /home/devuser/.vimrc
+COPY zshrc /home/$USERNAME/.zshrc
+COPY vimrc /home/$USERNAME/.vimrc
 USER root
 RUN chown $USERNAME:$USERNAME /home/$USERNAME/.zshrc \
     && chown $USERNAME:$USERNAME /home/$USERNAME/.vimrc \
