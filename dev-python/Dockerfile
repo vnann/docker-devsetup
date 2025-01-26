@@ -1,8 +1,6 @@
 # Development environment for Python3
 FROM debian:bullseye-slim
 
-ARG UID=1000
-ARG GID=1000
 ARG USERNAME=devuser
 
 ENV TERM xterm
@@ -13,7 +11,7 @@ ENV RUNNING_IN_DOCKER true
 RUN apt-get update \
     && apt-get install -y \
     	vim \
-	dialog \
+		dialog \
     	sudo \
     	curl \
     	git-core \
@@ -22,7 +20,7 @@ RUN apt-get update \
     	zsh \
     	wget \
     	unzip \
-    	openssl \
+    	openssl \	
     	fonts-powerline \
     	dos2unix \
     	figlet \
@@ -30,35 +28,20 @@ RUN apt-get update \
     	apt-transport-https \
     	lsb-release \
         dnsutils \
-    && groupadd --gid $GID -o $USERNAME \
-    && adduser --uid $UID --gid $GID  --quiet --disabled-password --shell /bin/zsh --home /home/$USERNAME --gecos "User"  $USERNAME  \
+		iputils-ping \
+		netcat \
+		net-tools \
+		iproute2 \
+    && adduser  --quiet --disabled-password --shell /bin/zsh --home /home/$USERNAME --gecos "User"  $USERNAME  \
     && echo "devuser:p@ssword1" | chpasswd && usermod -aG sudo $USERNAME
 
-# https://boxboat.com/2017/07/25/fixuid-change-docker-container-uid-gid/
-# Used the code from above website to fix the user permission issues. 
-RUN USER=devuser && \
-    GROUP=devuser && \
-    curl -SsL https://github.com/boxboat/fixuid/releases/download/v0.1/fixuid-0.1-linux-amd64.tar.gz | tar -C /usr/local/bin -xzf - && \
-    chown root:root /usr/local/bin/fixuid && \
-    chmod 4755 /usr/local/bin/fixuid && \
-    mkdir -p /etc/fixuid && \
-    printf "user: $USER\ngroup: $GROUP\n" > /etc/fixuid/config.yml
-ENTRYPOINT ["fixuid"]
-
-USER $USERNAME
-WORKDIR /home/$USERNAME
+WORKDIR /root
 
 RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" 
 
 COPY requirements.txt .
-COPY zshrc /home/$USERNAME/.zshrc
-COPY vimrc /home/$USERNAME/.vimrc
-USER root
-RUN chown $USERNAME:$USERNAME /home/$USERNAME/.zshrc \
-    && chown $USERNAME:$USERNAME /home/$USERNAME/.vimrc \
-    && usermod -u $UID -o  $USERNAME \
-    && groupmod -g $UID $USERNAME
-USER $USERNAME
+COPY zshrc /root/.zshrc
+COPY vimrc /root/.vimrc
 
 RUN python3 -m pip install -r requirements.txt
 

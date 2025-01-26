@@ -10,3 +10,7 @@ requests
 netaddr
 utils
 bpytop
+cryptography
+openai
+python-dotenv
+ 
