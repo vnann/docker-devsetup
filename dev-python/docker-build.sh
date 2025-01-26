@@ -1,1 +1,1 @@
-docker build . --tag dev-python:v1
+docker build . --tag mydev:v1
