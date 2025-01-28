@@ -17,7 +17,9 @@ RUN apt-get update \
 		cron \
     	git-core \
     	gnupg \
+		locales \
     	python3 python3-pip python3-venv \
+		libpq-dev \
     	zsh \
     	wget \
     	unzip \
@@ -33,17 +35,19 @@ RUN apt-get update \
 		netcat \
 		net-tools \
 		iproute2 \
+	&& locale-gen en_US.UTF-8 \
     && adduser  --quiet --disabled-password --shell /bin/zsh --home /home/$USERNAME --gecos "User"  $USERNAME  \
     && echo "devuser:p@ssword1" | chpasswd && usermod -aG sudo $USERNAME
 
 WORKDIR /root
 
 RUN bash -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" 
+# AzureCLI
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
+# Kubernetes tools
 RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
 	&& chmod +x kubectl \
 	&& mv kubectl /usr/local/bin/kubectl
-
 RUN git clone https://github.com/ahmetb/kubectx /usr/local/kubectx \
 	&& ln -s /usr/local/kubectx/kubectx /usr/local/bin/kubectx \
 	&& ln -s /usr/local/kubectx/kubens /usr/local/bin/kubens

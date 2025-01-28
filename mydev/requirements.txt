@@ -1,3 +1,4 @@
+ansible
 netapp-lib
 prettytable
 texttable
@@ -22,3 +23,5 @@ python-dotenv
 pyfiglet
 textual
 rich
+Django
+psycopg2
