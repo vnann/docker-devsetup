@@ -25,3 +25,10 @@ textual
 rich
 Django
 psycopg2
+matplotlib
+spicy
+sklearn
+theano
+tensorflow
+keras
+tourch

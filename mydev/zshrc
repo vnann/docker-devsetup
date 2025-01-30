@@ -109,4 +109,4 @@ SAVEHIST=10000
 setopt HIST_IGNORE_SPACE
 setopt SHARE_HISTORY
 
-figlet -f smslant "Welcome to Python Dev Env"
+figlet -f smslant "Welcome to mydev"
