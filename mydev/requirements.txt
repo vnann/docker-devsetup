@@ -12,9 +12,9 @@ requests
 netaddr
 utils
 argparse
-click
 argcomplete
 jmespath
+click
 pandas
 pretty_html_table
 bpytop
@@ -32,3 +32,7 @@ theano
 tensorflow
 keras
 tourch
+colorama
+tabulate
+plumbum
+numpy
